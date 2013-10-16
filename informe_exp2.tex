@@ -1,0 +1,924 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[left=2.7cm,top=2.5cm,right=2.7cm,bottom=2.5cm]{geometry}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+
+\hyphenation{co-rres-pon-de}
+% encabezados
+\lhead[]{\footnotesize Universidad Técnica Federico Santa María. \rightmark}
+\chead[]{}
+\rhead[\footnotesize \leftmark]{}
+\renewcommand{\headrulewidth}{0.5pt}
+
+%\pagestyle{fancy}
+
+\title{\large Informe final Experiencia \#2\\ \huge Medición de Canal Inalámbrico Fijo en 
+Banda Angosta\\}
+\author{\\ \ \\ \ \\ \ \\ \ \\ \ \\ \ \\ \ \\ \ \\ \ \\
+\small
+\begin{tabular}{ l l l }
+Profesor & Luis Vinnett &\\
+& & \\
+Asignatura & Laboratorio de Telecomunicaciones \\
+& & \\
+Sigla & ELO-352 & \\
+& & \\
+Integrantes & Eduardo Barra & 2730038-3\\
+&	Adan Morales & 2830042-5 \\
+&	Ricardo Salinas & 2830015-8\\
+& & \\
+Grupo & 2 &\\
+\Large	& & \\
+& & \\
+& & \\
+& & \\
+& & \\
+\normalsize	& & \\
+\end{tabular} }
+\date{\today}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\newpage
+\thispagestyle{fancy}
+\tableofcontents
+
+\newpage
+\pagestyle{fancy}
+\section{Introducción}
+
+\begin{spacing}{1.5}
+Las comunicaciones inalámbricas son más complejas de lo que parecen, ya que las señales estan 
+sometidas constantemente a desvanecimientos, ya sean especiales y/o temporales, debido a 
+movimiento del Tx, Rx u objetos entre ambos, provocando estos caminos, multitrayectorias variables, 
+lo que afecta que cambie la naturaleza del canal inalámbrico haciendo necesario evaluar parámetros 
+en forma estadística, como es el tiempo de coherencia y el ancho de banda de coherencia.\\
+
+Luego de la experiencia de laboratorio realizada la cual consiste en realizar mediciones del 
+canal inalámbrico en distintos escenarios, ya sea enlace LOS, NLOS (situación con gente en transito 
+entre Tx y Rx, influyendo en los multitrayectos), además, también se observará cómo afecta la 
+orientación de la antena receptora respecto de la antena transmisora, ya sean estando paralela 
+o perpendicular una de la otra.\\
+
+Las mediciones se realizarán utilizando un “Virtual Instrument” de LabView, para luego realizar un 
+análisis más estadístico, y determinar cuales son los mejores escenarios para transmitir a través 
+de un canal inalámbrico, a su vez de observar y concluir por qué al cambiar de escenario la señal 
+podría llegar con bastantes pérdidas y muy degradada.\\
+\end{spacing}
+
+\renewcommand{\baselinestretch}{1}
+\newpage
+\section{Procedimiento}
+
+Se comienza la experiencia ubicando una única antena transmisora de dipolo en un punto fijo a 
+unos 2[m] del piso, la cual emitirá una señal a 2,4 [GHz], luego la antena receptora se ubicará 
+a unos 34 a 38 [m] de la antena anterior, para luego proceder con el Instrumento Virtual Frankonia 
+Power Meter, realizando capturas cada 20 [ms] entre unos 10 y 15 [min] aproximadamente.\\
+
+Las condiciones en las cuales se realizaron las mediciones son las siguientes:
+\begin{center}
+	\begin{tabular}{| c | c | c | c | c | c |} \hline
+   & LOS/NLOS & Polarización & Condición & Duración & Distancia  \\ 
+   & 		& en Rx & ambiental & [min] & [m]  \\ \hline 
+Medición 1 & LOS	& Vertical	& Sin gente	& 15 & 35 \\ \hline
+Medición 2 & LOS	& Horizontal	& Sin gente	& 15 & 35 \\ \hline
+Medición 3 & NLOS	& Horizontal	& Sin gente	& 12 & 38	\\ \hline
+Medición 4 & NLOS	& Horizontal	& Con gente	& 10 & 38	\\ \hline
+Medición 5 & NLOS	& Vertical	& Con gente	& 10 & 38	\\ \hline
+Medición 6 & NLOS	& Vertical	& Sin gente	& 15 & 38	\\ \hline
+Medición 23 & LOS	& Vertical	& Con gente	& 2 (fallida) & 35	\\ \hline
+Medición 24 & LOS	& Vertical	& Con gente	& 10 & 35	\\ \hline
+Medición 25 & LOS	& Horizontal	& Con gente	& 10 & 35	\\  \hline
+Medición 26 & LOS	& Horizontal	& Con gente	& 10 &	34 (En altura)\\ \hline
+Medición 27 & LOS	& Vertical	& Sin gente	& 10 & 34 (En altura)	\\ \hline
+	\end{tabular}
+\end{center}
+
+
+Además se realizaron mediciones para observar como varía la señal cuando se mueve el Rx 
+unos 15 [cm], esto es cercano a la longitud de onda 0,125 [m]. Esta medición fué bajo las 
+siguientes condiciones:\\
+-LOS\\ -Polarización vertical\\ -Sin gente\\ -Duración de 5 [min]\\ -A 35 [m] del Tx.\\
+
+Acontinuación un esquema desde una vista superior.\\
+\begin{center}
+	\begin{tabular}{| c | c | c | c |} \hline
+	Medición 7 & Medición 8 & Medición 9 & Medición 10 \\ \hline
+	Medición 14 & Medición 13 & Medición 12 & Medición 11 \\ \hline
+	Medicion 15 & Medición 16 & Medición 17 & Medición 18 \\ \hline
+	Medición 22 & Medición 21 & Medición 20 & Medición 19 \\ \hline
+	\end{tabular}
+\end{center}
+\footnotesize 
+\begin{center}
+Tabla 2: Diagrama de ubicación de los puntos de recepción, visto desde arriba.
+\end{center}
+\normalsize
+
+\newpage
+\section{Análisis}
+
+\paragraph{1.- Para las mediciones de fading temporal, determine el factor K y tiempo de coherencia 
+de las mediciones. Para ello, analice el record completo y luego divídalo en 3 segmentos de 
+5 minutos. Ello permitirá analizar la consistencia de los resultados. ¿Qué fenómeno se observa 
+al obtener el factor K de los segmentos de 5 minutos en comparación de aquél correspondiente al 
+del record completo? ¿Qué se puede concluir del tiempo de coherencia? Separe los resultados en 
+base a tráfico observado durante la medición (horario de recreo entre clases!) y grado de 
+obstrucción. Con respecto a esto último es habitual especificar el “excess path loss” que es 
+la pérdida por sobre lo que predice la ecuación de Friis para un enlace de igual longitud.\\}
+\small
+\begin{center}
+	\begin{tabular}{| c | c | c | c | c | c |} \hline
+Med & Descripción & K-total & K 1/3 & K 2/3 & K 3/3 \\ \hline
+1	& LOS		&	1.8123  &  1.9674 	&  2.0048  	&  1.5455 \\
+	& Vertical	&			&			&			&			\\
+	& Sin gente &			&			&			&			\\ \hline
+2	& LOS 		&	1.2846  &  2.0454   &  2.2164   & 18.8217	\\
+	& Horizontal&			&			&			&			\\
+	& Sin gente &			&			&			&			\\ \hline
+3	& NLOS		& 104.6428  & 107.6862  & 153.1641  & 131.9275	\\
+	& Horizontal&			&			&			&			\\
+	& Sin gente	&			&			&			&			\\ \hline
+4	& NLOS		& 79.0962   & 87.1520   &  76.0635  & 80.3491	\\ 
+	& Horizontal&			&			&			&			\\
+	& Con gente	&			&			&			&			\\ \hline
+5	& NLOS		& 135.5027  &119.1709  	& 164.7176  & 196.9461	\\
+	& Vertical	&			&			&			&			\\
+	& Con gente	&			&			&			&			\\ \hline
+6	& NLOS		& 225.9990  & 194.3546  & 262.9200  & 246.4110	\\
+	& Vertical	&			&			&			&			\\ 
+	& Sin gente	&			&			&			&			\\ \hline
+24	& LOS		&  1.6423   & 1.8772    & 1.6558    & 1.6288	\\ 
+	& Vertical	&			&			&			&			\\
+	& Con gente	&			&			&			&			\\ \hline
+25	& LOS		& 17.3114   & 18.1255   & 40.2994   & 17.0116	\\ 
+	& Horizontal&			&			&			&			\\
+	& Con gente	&			&			&			&			\\ \hline
+26	& LOS 		& 44.6654   & 51.7480   & 100.9218  & 112.0481	\\ 
+	& Horizontal&			&			&			&			\\
+	& Con gente	&			&			&			&			\\ \hline
+27	& LOS		& 1.4003    & 1.8735    & 1.8051    & 12.6134	\\
+	& Vertical	&			&			&			&			\\
+	& Sin gente	&			&			&			&			\\ \hline
+	\end{tabular}
+\end{center}
+\normalsize
+
+Primero, utilizando matlab se obtiene un $K_{total}$ de muestreo, y un $K$ para cada tramo
+de la medición, siendo la medición total dividida en 3 partes de la misma duración. 
+
+Realizando una observación sobre los resultados, en base al factor K total obtenido
+de forma experimental, se obtiene una mejor comunicación o estado del canal inalámbrico 
+cuando el enlace es en línea vista, luego, con gente en la zona de Fresnel comienza a 
+verse un poco afectada la comunicación, de todas formas dependiendo de la polarización
+de la antena. Para el caso de NLOS se observa que la comunicación mejora levemente al haber
+gente en la zona de Fresnel, esto puede deberse a que aumentan más los multitrayectos
+hacia la antena receptora, y además la señal mejora levemente si la polarización de la 
+antena es horizontal, siendo algo extraño ya que la comunicación deberia ser mejor si 
+la polarización es la misma para ambas antenas.
+
+Para la medición 26 y 27, se observa mejor el caso en donde la comuniciación según el 
+parámetro K es mucho mejor en LOS, polarización vertical y sin gente, en vez de 
+LOS, polarización horizontal y con gente.\\
+
+Para el tiempo de coherencia se establece como el tiempo durante el cual la autocovarianza 
+de la señal está por sobre 0,5, para proceder con esto se programa la función en matlab 
+obteniendo los siguientes resultados (incluyendo las mediciónes en altura).
+\begin{center}
+	\begin{tabular}{| c | c | c | c | c |} \hline
+Medición & $T_{coherencia-total}$ & $T_{coherencia1/3}$ & $T_{coherencia2/3}$ & 
+$T_{coherencia3/3}$\\ \hline
+1	& 0.2869 &	0.3368 &   0.2807 &  1.5719 \\ \hline
+2	& 74.9660 &	1.6498 &   3.6135 & 25.5695 \\ \hline
+3	& 0.9613 &	1.0815 &   1.3864 &  0.3882 \\ \hline
+4	& 0.1819 &	0.2122 &   0.2728 & 0.2424 \\ \hline
+5	& 0.5899 &	0.7147 &   0.7486 &  0.4764 \\ \hline
+6	& 0.1701 &	0.1767 &   0.3337 &  0.3729 \\ \hline
+24	& 0.7722 & 2.0687  &  0.6618  &  0.6204	\\ \hline
+25	& 2.6154 & 1.1077  &  1.4305  &  3.3687\\ \hline
+26	& 21.8965 & 7.7498  &  3.4293  & 18.5625 \\ \hline
+27	& 49.9193 & 1.4206 &  19.6023 &   2.6512	\\ \hline
+	\end{tabular}
+\end{center}
+
+El código utilizado fué el que se muestra a continuación.
+
+\small
+\begin{verbatim}
+function [output] = Coherencia (A)
+B = load (A);
+datos = B(:,1); 
+		    
+%se segmenta los datos en 3 partes
+primeraMitadDatos = datos(1:floor(length(datos)/3));
+segundaMitadDatos = datos(floor(length(datos)/3):floor(2*length(datos)/3));
+terceraMitadDatos = datos(floor(2*length(datos)/3):length(datos)); 
+							    
+%cantidad de mediciones totales realizadas
+DatosTotales = length(datos);
+LprimeraMitad = length(primeraMitadDatos);
+LsegundaMitad = length(segundaMitadDatos);
+LterceraMitad = length(terceraMitadDatos);
+								    
+%se obtiene la autocovarianza de los datos
+datosAutoCorrTotal = (autocorr(datos,DatosTotales-1));
+datosAutoCorrPrimera = (autocorr(primeraMitadDatos,LprimeraMitad-1));
+datosAutoCorrSegunda = (autocorr(segundaMitadDatos,LsegundaMitad-1));
+datosAutoCorrTercera = (autocorr(terceraMitadDatos,LterceraMitad-1));
+																		    
+%a partir de la autocorrelacion obtenemos el tiempo de coherencia para
+%cada segmento buscando los valores de autocorrelacion mayor a 0,5
+TcTotal = find(datosAutoCorrTotal<0.5,1);
+TcTotal = 15*60*TcTotal/length(datos);
+																							     
+TcPrimera = find(datosAutoCorrPrimera<0.5,1);
+TcPrimera = 5*60*TcPrimera/length(primeraMitadDatos);
+																				      
+TcSegunda = find(datosAutoCorrSegunda<0.5,1);
+TcSegunda = 5*60*TcSegunda/length(segundaMitadDatos);
+																								      
+TcTercera = find(datosAutoCorrTercera<0.5,1);
+TcTercera = 5*60*TcTercera/length(terceraMitadDatos);
+																							      
+%coordenada x
+x = 0:15/(length(datos)-1):15;
+																		      
+%se grafica autocovarianza en funcion del numero de datos 
+plot (x,datosAutoCorrTotal);
+xlabel('minutos');
+ylabel('autocovarianza');
+output = [TcTotal TcPrimera TcSegunda TcTercera];
+end
+\end{verbatim}
+\normalsize
+
+Como se mencionó anteriormente el tiempo de coherencia se refiere al tiempo en el cual 
+el canal no varía, por lo que es de esperar que para las mediciones efectuadas en 
+escenarios sin gente el tiempo de coherencia fuera más largo, que los otros casos, puesto 
+que existen menores objetos dispersores que pudieran alterar el canal de transmisión.
+Según los datos calculados esto se refleja parcialmente ya que para las mediciones numero 
+2 y 27 que son escenarios sin gente se refleja una alta correlación, sin embargo, para 
+otras mediciones efectuadas sin gente no se aprecia un valor de correlación tan alto como 
+los primeros.  Lo anterior puede ser causa a que los altos valores de correlación se 
+apreciaron en escenarios de línea vista.\\
+Respecto al Path-Loss se puede decir que este corresponde a la pérdida por sobre lo que 
+predice la ecuación de Friis para un enlace de igual longitud (en nuestro caso 35[m] aprox.).\\
+
+La ecuación de Friss para caracterizar el enlace nos permite obtener una relación
+entre la potencia transmitida y recibida, en un escenario de línea vista (LOS). Por otro lado, 
+la antena transmisora teóricamente, esta irradiando a una potencia de 10dBm.\\
+\newpage
+Con las distancias y la expresión $ -20 log \left ( \frac{\lambda}{4 \cdot \pi \cdot d} \right )$
+se calculó el path loss obteniendose la siguiente tabla:
+
+\begin{center}
+	\begin{tabular}{| c | c | c | c |} \hline
+   &   & Distancia [m] & PL [dB] \\ \hline 
+Medición 1 & LOS	& 35	& 70,9	\\ \hline
+Medición 2 & LOS	& 35	& 70,9	\\ \hline
+Medición 3 & NLOS	& 38	& 71,6	\\ \hline
+Medición 4 & NLOS	& 38	& 71,6	\\ \hline
+Medición 5 & NLOS	& 38	& 71,6	\\ \hline
+Medición 6 & NLOS	& 38	& 71,6	\\ \hline
+Medición 24 & LOS	& 35	& 70,9	\\ \hline
+Medición 25 & LOS	& 35	& 70,9	\\ \hline
+Medición 26 & LOS	& 34	& 70,6	\\ \hline
+Medición 26 & LOS	& 34	& 70,6	\\ \hline
+	\end{tabular}
+\end{center}
+
+\paragraph{2.- Estime las autocovarianzas de los datos de desvanecimientos temporales usando los 
+intervalos de 15 minutos. En cada gráfico indique además el valor del factor K. (como las 
+autocovarianzas están autoescaladas a uno este dato es necesario para completar la información).\\}
+
+Para la autocovarianza de las muestras en el caso de fading temporal, se obtienen usando la
+siguiente función en matlab.
+
+\small 	
+\begin{verbatim}
+% Autocovarianza
+%N: Numero total de datos.
+%(x): se va variando manualmente entre 1-6,24-27.
+datos=load('Grupo2/med(x).txt'); 
+
+%Obtencion de datos necesarios
+for i=1:length(datos)
+	new_datos(i)=datos(i,1);
+end
+N=length(new_datos); 
+
+%Graficos de autocorrelacion
+acorr=(autocorr(new_datos,N-1));
+
+%Rango de tiempo.
+x = 0:15/(length(new_datos)-1):15;
+plot (x,acorr)
+xlabel('Tiempo [min]');
+ylabel('Autocovarianza [s/u]');
+%(y) es modificado manualmente siendo el K correspondiente a (x).  
+legend('Autocovarianza - K=(y)'); 
+
+end
+\end{verbatim}
+\normalsize
+
+Donde luego se obtienen los gráficos de a continuación.
+
+\begin{figure}[H]
+  \centering
+        \includegraphics[width=0.65\textwidth]{med1}
+		\caption{\footnotesize 
+		Gráfico de autocovarianza de medición 1. LOS, Polarización Vertical, Sin gente.}
+\label{fig:med1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+        \includegraphics[width=0.65\textwidth]{med2}
+		\caption{\footnotesize
+		Gráfico de autocovarianza de medición 2. LOS, Polarización Horizontal, Sin gente.}
+\label{fig:med2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+        \includegraphics[width=0.65\textwidth]{med3}
+		\caption{\footnotesize
+		Gráfico de autocovarianza de medición 3. NLOS, Polarización Horizontal, Sin gente.}
+\label{fig:med3}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+        \includegraphics[width=0.65\textwidth]{med4}
+		\caption{\footnotesize
+		Gráfico de autocovarianza de medición 4. NLOS, Polarización Horizontal, Con gente.}
+\label{fig:med4}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+        \includegraphics[width=0.65\textwidth]{med5}
+		\caption{\footnotesize
+		Gráfico de autocovarianza de medición 5. NLOS, Polarización Vertical, Con gente.}
+\label{fig:med5}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+        \includegraphics[width=0.65\textwidth]{med6}
+		\caption{\footnotesize
+		Gráfico de autocovarianza de medición 6. NLOS, Polarización Vertical, Sin gente.}
+\label{fig:med6}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+        \includegraphics[width=0.65\textwidth]{med24}
+		\caption{\footnotesize
+		Gráfico de autocovarianza de medición 24. LOS, Polarización Vertical, Con gente.}
+\label{fig:med24}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+        \includegraphics[width=0.65\textwidth]{med25}
+		\caption{\footnotesize
+		Gráfico de autocovarianza de medición 25. LOS, Polarización Horizontal, Con gente.}
+\label{fig:med25}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+        \includegraphics[width=0.65\textwidth]{med26}
+		\caption{\footnotesize
+		Gráfico de autocovarianza de medición 26. LOS (en altura), Polarización Horizontal, 
+		Con gente.}
+\label{fig:med26}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+        \includegraphics[width=0.65\textwidth]{med6}
+		\caption{\footnotesize
+		Gráfico de autocovarianza de medición 27. LOS (en altura), Polarización Vertical, 
+		Sin gente.}
+\label{fig:med27}
+\end{figure}
+
+\normalsize
+
+\paragraph{3.- Intente ajustar una curva exponencial a cada autocovarianza y determine la constante 
+de tiempo de decaimiento del mejor ajuste para cada caso.\\}
+
+Basado en el código de la pregunta anterior se tiene el conjunto de datos para proceder 
+a obtener su correspondiente curva exponencial. El código completo a continuación.
+
+\begin{verbatim}
+function [ x, acorr ] = pregunta2( file )
+%PREGUNTA2 Summary of this function goes here
+%   Detailed explanation goes here
+% Autocovarianza
+%N: Numero total de datos.
+%(x): se va variando manualmente entre 1-6,24-27.
+datos=load(file); 
+N = length(datos);
+disp(N);
+
+%Obtencion de datos necesarios
+for i=1:length(datos)
+	  new_datos(i)=datos(i,1);
+	  end
+
+	  %Graficos de autocorrelacion
+	  acorr=(autocorr(new_datos,N-1));
+
+	  %Rango de tiempo.
+	  x = 0:15/(length(new_datos)-1):15;
+	  plot (x,acorr)
+	  xlabel('Tiempo [min]');
+	  ylabel('Autocovarianza [s/u]');
+	  %(y) es modificado manualmente siendo el K correspondiente a (x).  
+	  legend('Autocovarianza - K=(y)'); 
+
+	  end
+\end{verbatim}
+
+Luego usando la toolbox cftool se obtienen las curvas exponenciales que se muestran a 
+a continuación, en las figuras \ref{fig:cmed1} a la \ref{fig:cmed27}.\\
+
+En la textbox de cada gráfico se encuentran los parámetros de la curva, donde ``b'' 
+corresponde a la constante de tiempo de cada medición.\\
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{curvas/med1}
+		\caption{\footnotesize Curva exponencial sobre medición 1.}
+\label{fig:cmed1}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{curvas/med2}
+		\caption{\footnotesize Curva exponencial sobre medición 2.}
+\label{fig:cmed2}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{curvas/med3}
+		\caption{\footnotesize Curva exponencial sobre medición 3.}
+\label{fig:cmed3}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{curvas/med4}
+		\caption{\footnotesize Curva exponencial sobre medición 4.}
+\label{fig:cmed4}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{curvas/med5}
+		\caption{\footnotesize Curva exponencial sobre medición 5.}
+\label{fig:cmed5}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{curvas/med6}
+		\caption{\footnotesize Curva exponencial sobre medición 6.}
+\label{fig:cmed6}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{curvas/med24}
+		\caption{\footnotesize Curva exponencial sobre medición 24.}
+\label{fig:cmed24}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{curvas/med25}
+		\caption{\footnotesize Curva exponencial sobre medición 25.}
+\label{fig:cmed25}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{curvas/med26}
+		\caption{\footnotesize Curva exponencial sobre medición 26.}
+\label{fig:cmed26}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{curvas/med27}
+		\caption{\footnotesize Curva exponencial sobre medición 27.}
+\label{fig:cmed27}
+\end{minipage}
+\end{figure}
+
+En base a los gráficos obtenidos se puede decir que algunas mediciones presentaban demasiada 
+distorsión en sus datos por lo que no se pudo modelar una curva con una exponencial normal 
+si no con 2 exponenciales superpuestas a diferencia de otras, que son más exactas y pudieron 
+ser modeladas con una exponencial simple.\\
+
+Como comentario a partir de lo observado se agrega que la señal se distorsiona fácilmente 
+arrojando datos erroneos durante una comunicación wireless.
+
+\paragraph{4.- Para un mismo escenario, construya histogramas con los datos de fading temporal y 
+con los de fading espacial y compare.\\ \ \\}
+
+Comparación en escenario LOS, polarización vertical en figura \ref{fig:histo1} y \ref{fig:histo24}.
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo1}
+		\caption{\footnotesize LOS, Polarización vertical, sin gente.}
+\label{fig:histo1}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo24}
+		\caption{\footnotesize LOS, Polarización vertical, con gente.}
+\label{fig:histo24}
+\end{minipage}
+\end{figure}
+\footnotesize
+Se observa que para el caso sin gente, hay menores multitrayectos, por lo tanto menor cantidad 
+de elementos interfiriendo el canal, dispersandose menos la señal.\\
+\newpage
+\normalsize
+Comparación en escenario LOS, polarización horizontal en figura \ref{fig:histo2} y \ref{fig:histo25}.
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo2}
+		\caption{\footnotesize LOS, Polarización horizontal, sin gente.}
+\label{fig:histo2}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo25}
+		\caption{\footnotesize LOS, Polarización horizontal, con gente.}
+\label{fig:histo25}
+\end{minipage}
+\end{figure}
+\footnotesize
+Para la figura \ref{fig:histo2}, existe una alta concentración a 0 dB, pero con perdidas debido a la 
+polarización, sin embargo, en el caso con gente, esta se concentra principalmente en torno
+a los -7 dB, debido a la dispersión de la señal por la gente transitando.\\
+
+\normalsize
+Comparación en escenario NLOS, polarización vertical en figura \ref{fig:histo6} y \ref{fig:histo5}.
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo6}
+		\caption{\footnotesize NLOS, Polarización vertical, sin gente.}
+\label{fig:histo6}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo5}
+		\caption{\footnotesize NLOS, Polarización vertical, con gente.}
+\label{fig:histo5}
+\end{minipage}
+\end{figure}
+\footnotesize
+La diferencia no es realmente notoria para los casos anteriores, pero se puede decir, que para el 
+caso de la figura \ref{fig:histo5} mejora levemente por efecto de los multitrayectos.\\
+\newpage
+\normalsize
+Comparación en escenario NLOS, polarización horizontal en figura \ref{fig:histo3} y \ref{fig:histo4}.
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo3}
+		\caption{\footnotesize NLOS, Polarización horizontal, sin gente.}
+\label{fig:histo3}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo4}
+		\caption{\footnotesize NLOS, Polarización horizontal, con gente.}
+\label{fig:histo4}
+\end{minipage}
+\end{figure}
+\footnotesize
+Para este caso, ambas figuras tienen sus máximos en torno a los -25 dB, pero para el caso
+con gente transitando la señal se ve más dispersa por los elementos que provocan los 
+desvanecimientos.\\
+
+\normalsize
+Comparación en escenario LOS en altura en figura \ref{fig:histo26} y \ref{fig:histo27}.
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo26}
+		\caption{\footnotesize LOS, Polarizacion horizontal, con gente.}
+\label{fig:histo26}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo27}
+		\caption{\footnotesize LOS, Polarización vertical, sin gente.}
+\label{fig:histo27}
+\end{minipage}
+\end{figure}
+\footnotesize
+Acá aparece una situación un poco extraña, en la figura \ref{fig:histo26} los pick de señal 
+estan a una cantidad de dB menores que los de la figura \ref{fig:histo27} lo cual es esperable,
+la situación es que en el segundo caso, aparece un máximo total, y un máximo local, donde esto no es
+esperable, pero se puede argumentar debido a que la hora donde se hizo la medición ya no era
+una situación casi perfecta, transitaba bastante gente (pero menor en consideración a los cambios
+de bloque de asignaturas por ejemplo), provocando más multitrayectos, debilitanto la señal.\\
+
+\normalsize
+Los siguientes histogramas (figuras \ref{fig:histo7} a figura \ref{fig:histo22}) son del 
+procedimiento que se realizó modificando la ubicación de la antena de recepción más o 
+menos la distancia de una longitud de onda $\lambda$, como se indicó en el diagrama en la 
+tabla numero 2.
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo7}
+		\caption{\footnotesize Medición 7.}
+\label{fig:histo7}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo8}
+		\caption{\footnotesize Medición 8.}
+\label{fig:histo8}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo9}
+		\caption{\footnotesize Medición 9.}
+\label{fig:histo9}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo10}
+		\caption{\footnotesize Medición 10.}
+\label{fig:histo10}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo11}
+		\caption{\footnotesize Medición 11.}
+\label{fig:histo11}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo12}
+		\caption{\footnotesize Medición 12.}
+\label{fig:histo12}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo13}
+		\caption{\footnotesize Medición 13.}
+\label{fig:histo13}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo14}
+		\caption{\footnotesize Medición 14.}
+\label{fig:histo14}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo15}
+		\caption{\footnotesize Medición 15.}
+\label{fig:histo15}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo16}
+		\caption{\footnotesize Medición 16.}
+\label{fig:histo16}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo17}
+		\caption{\footnotesize Medición 17.}
+\label{fig:histo17}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo18}
+		\caption{\footnotesize Medición 18.}
+\label{fig:histo18}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo19}
+		\caption{\footnotesize Medición 19.}
+\label{fig:histo19}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo20}
+		\caption{\footnotesize Medición 20.}
+\label{fig:histo20}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo21}
+		\caption{\footnotesize Medición 21.}
+\label{fig:histo21}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.45\textwidth}
+  \centering
+        \includegraphics[width=1\textwidth]{histo22}
+		\caption{\footnotesize Medición 22.}
+\label{fig:histo22}
+\end{minipage}
+\end{figure}
+
+Respecto a los gráficos anteriores se puede decir que la señal percibida no debiera variar tanto
+bajo una situación controlada, lo que sucede en este caso es que dependiendo de como llegue la 
+onda al receptor (cuantas longitudes de onda varía desde el transmisor al receptor), es como va 
+a variar la calidad de la señal, además cabe considerar que en el momento de toma de mediciones 
+el escenario no era tan controlado, debido principalmente a factores externos como gente transitando.
+Dicho lo anterior se comenta que por ejemplo para los casos en las figuras \ref{fig:histo11} 
+y \ref{fig:histo12} la señal se encuentra levemente debilitada pero altamente concentrada en un 
+solo punto, a diferencia por ejemplo de lo que se observa en la figura \ref{fig:histo17} donde acá 
+la recepción de la señal es bastante difusa. También, por ejemplo para el caso de la figura 
+\ref{fig:histo22} la señal se observa que percibe dos potencias diferenciables, una centrada a los 0
+dB por el LOS, y otra en torno a los -10 dB, que deben ser la recepción por los multitrayectos.
+
+
+\paragraph{5.- Construya gráficos de puntos dispersos de K vs. ambos tiempos de coherencia para
+todos los intervalos de 5 minutos medidos.\\}
+
+Para graficar los puntos dispersos de K vs el tiempo de coherencia se capturaron los datos 
+de ambas funciones en 2 matrices K y TC y luego se realizo un plot de puntos de cada 
+columna usando el comando:
+\begin{verbatim}
+plot(K(:,i),TC(:,i),’o’);
+\end{verbatim}
+
+donde i =2,3,4 representando cada segmento de las mediciones.\\
+
+A continuación en las figuras \ref{fig:p5si1} a \ref{fig:p5si3} se muestran los gráficos 
+obtenidos.\\
+
+\begin{figure}[H]
+  \centering
+        \includegraphics[width=0.65\textwidth]{p5si1}
+		\caption{\footnotesize
+		Gráfico K vs. Tiempo de coherencia tramo 1 (0-5 [min]).}
+\label{fig:p5si1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+        \includegraphics[width=0.65\textwidth]{p5si2}
+		\caption{\footnotesize
+		Gráfico K vs. Tiempo de coherencia tramo 1 (5-10 [min]).}
+\label{fig:p5si2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+        \includegraphics[width=0.65\textwidth]{p5si3}
+		\caption{\footnotesize
+		Gráfico K vs. Tiempo de coherencia tramo 1 (10-15 [min]).}
+\label{fig:p5si3}
+\end{figure}
+
+Se observa una dispersión absoluta de los puntos en cada gráfico, por lo que se infiere 
+que el valor de K es bastante inestable con respecto al tiempo de coherencia.\\
+
+
+\paragraph{6.- Si trabajó con el equipo de 2.4GHz determine el aumento de potencia recibida al 
+reemplazar en el receptor la antena dipolo por la directiva. Este aumento debería ser igual a 
+la diferencia de ganancias de las antenas en un ambiente de espacio libre, pero en un ambiente 
+con presencia significativa de multitrayectoria (o sea específicamente los casos sin línea de 
+vista), la diferencia puede ser menor o mayor, según las direcciones de arribo de los diferentes 
+rebotes.\\}
+No se realiza reemplazo de dipolo, por lo que este punto no se considera.
+
+
+\newpage
+\section{Conclusiones}
+\begin{spacing}{1.5}
+En los escenarios NLOS la señal alcanza al receptor por medio del multitrayecto de la señal 
+es decir las reflexiones y dispersiones, con la correspondiente pérdida de potencia.
+
+Consecuencia de ello debiere haber una mayor autocovarianza que en línea vista y esto se refleja 
+en algunos escenarios donde no hay gente y se tiene un factor K grande.  A su vez se destaca 
+que la polarización horizontal posee una mayor inestabilidad que la vertical, tal como lo muestran 
+las 2 primeras mediciones (LOS sin gente).\\
+
+Cabe señalar, que todo lo anterior se reflejó solo en algunas mediciones. Considerando
+que constantemente transitaba gente cerca de la antena receptora, independiente si había tráfico 
+alto o bajo de personas, lo cual afectaba la recepción de la señal mostrando algunos resultados 
+con un factor K pequeño y gráficos de autocovarianza inestables. De igual modo algunas 
+mediciones se realizaron en solo 10 minutos.\\
+
+Finalmente se puede decir que las mediciones realizadas son un tanto imprecisas como se observó en 
+la estadística realizada, además, agregar que en comunicaciones inalámbricas son más 
+complejas de lo que parece, con una gran cantidad de variables presentes, multitrayectos, 
+desvanecimientos temporales y/o espaciales, entre otros dentro del entorno en que se
+esté, no es tan simple como un usuario común observa que su notebook se conecta al wifi que 
+entrega un access point.
+
+\end{spacing}
+
+\newpage
+\section{Referencias}
+
+- All Data Sheets Web, http://www.alldatasheet.com \\
+
+- Wikipedia, http://es.wikipedia.org/wiki/LabVIEW \\
+ 
+- Archivos proporcionados para la experiencia \\
+
+\qquad Mediciones reales a utilizar en el informe previo (mediciones.dat).
+
+\qquad Marco Teórico.
+
+\qquad Antecedentes sobre los equipos.
+
+\qquad Instrumento Virtual Frankonia Power Meter.
+
+
+\end{document}
